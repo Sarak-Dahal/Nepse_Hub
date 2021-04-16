@@ -16,7 +16,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import joblib
 import plotly.express as px
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 from email.message import EmailMessage
 
 # Creating a Database Connection
@@ -304,7 +304,7 @@ def predict():
                 temp_input = temp_input[1:]
                 #print(temp_input)
                 lst_output.extend(yhat.tolist())
-                d = datetime.today() + timedelta(days=i)
+                d = date.today() + timedelta(days=i)
                 newDate=str(d)
                 i = i + 1
                 file = open('csvFiles/lastThirtyDays.csv', 'a')
