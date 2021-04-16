@@ -1,9 +1,7 @@
 beautifulsoup4
-email-validator
 Flask
 joblib
 Keras
-Keras-Preprocessing
 mysql-connector-python
 numpy
 pandas
