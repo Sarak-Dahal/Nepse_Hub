@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+      <title>User Dashboard</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='userCss/style.css') }}">
+   </head>
+   <body>
+      <input type="checkbox" id="sidebar-toggle">
+      <div class="sidebar">
+         <div class="sidebar-header">
+            <h3 class="brand">
+               <span class="ti-stats-up"></span>
+               <span>Nepse Gyan</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+         </div>
+         <div class="sidebar-menu">
+            <ul>
+               <li>
+                  <a href="http://127.0.0.1:5000/user/home">
+                  <span class="ti-home"></span>
+                  <span>Home</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/user/company">
+                  <span class="ti-desktop"></span>
+                  <span>Listed Companies</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/user/brokers">
+                  <span class="ti-briefcase"></span>
+                  <span>Listed Brokers</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/help">
+                  <span class="ti-help"></span>
+                  <span>Help and Support</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/logout">
+                  <span class="ti-power-off"></span>
+                  <span>Log Out</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      {% block content %}
+      {% endblock %}
+   </body>
+   <style>
+      #proxies {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+      #proxies td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      }
+      #proxies tr:nth-child(even){background-color: #f2f2f2;}
+      #proxies tr:hover {background-color: #ddd;}
+      #proxies th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: var(--main-color);
+      color: white;
+      }
+      .card-body {
+      padding: 0rem !important;
+      display: block !important;
+      align-items: center;
+      }
+      .card-single{
+      padding:2rem;
+      }
+      .card-single h4{
+      font-size:1.3rem;
+      }
+   </style>
+</html>

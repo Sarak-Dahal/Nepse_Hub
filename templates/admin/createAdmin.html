@@ -1,0 +1,43 @@
+{% extends 'admin/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Add New Admin</h3>
+      <h6><a href="http://127.0.0.1:5000/logout" style="text-decoration:none;color:var(--main-color);float:right;">Logout</a></h6>
+   </header>
+   <main>
+      <div class="instruct" style="color:{{ color }};">
+         {{ msg }}
+      </div>
+      <form action="/addNewAdmin" class="companyCode" method="post">
+         <div class="form-group">
+            <div class="input-group">
+               <input name="name" placeholder="User Name" class="form-control" type="text" maxlength="25" required>
+            </div>
+            <div class="input-group">
+               <input name="number" placeholder="Contact Number" class="form-control nextCol" pattern="\d*" maxlength="10" required>
+            </div>
+            <div class="input-group">
+               <input name="password" placeholder="Password" class="form-control nextCol" type="password" maxlength="20" required>
+            </div>
+            <div class="input-group">
+               <input name="email" placeholder="Email" class="form-control nextCol" type="email" maxlength="25" required>
+            </div>
+         </div>
+         <div class="form-group">
+            <input name="submit" class="btn btn-lg btn-primary btn-block" value="Add New Admin" type="submit">
+         </div>
+      </form>
+   </main>
+</div>
+<style>
+   .btn-block{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   .nextCol{
+   margin-top:1em;
+   }
+</style>
+{% endblock %}

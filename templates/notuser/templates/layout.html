@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<div class="container">
+   <!--Header Starts Here-->
+   <head>
+      <meta charset="UTF-8">
+      <title>Nepse Hub</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <!-- Datatable -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div>
+            <a href="https://www.facebook.com/nepseHub" target="_blank">
+            <s class="bi bi-facebook"></s>
+            </a>
+            <a href="mailto:nepseHub@gmail.com" target="_blank">
+            <s class="bi bi-envelope"></s>
+            </a>
+            <a href="https://www.twitter.com/nepseHub" target="_blank">
+            <s class="bi bi-twitter"></s>
+            </a>
+            <a href="https://www.youtube.com/nepseHub" target="_blank">
+            <s class="bi bi-youtube"></s>
+            </a>
+            <a href="https://www.instagram.com/nepseHub" target="_blank">
+            <s class="bi bi-instagram"></s>
+            </a>
+         </div>
+         <div class="navbar ml-auto justify-content-end" style="font-weight:100; color:blue !important;padding:0px;">
+            <a class="nav-item nav-link " href="http://127.0.0.1:5000/help">Help & Support</a>
+            <a class="nav-item nav-link " href="http://127.0.0.1:5000/aboutUs">About Us</a>
+            <a class="nav-item nav-link" href="http://127.0.0.1:5000/contactUs">Contact Us</a>
+            <a class="nav-item nav-link" href="http://127.0.0.1:5000/login">Login/Sign Up</a>
+         </div>
+      </nav>
+      <div class="navbar navbar-light bg-light">
+         <a href="http://127.0.0.1:5000/" class="navbar-brand">
+            <div class="main-logo-image">
+               <img src="{{ url_for('static', filename='img/capture.png') }}" class="img-responsive">
+            </div>
+         </a>
+         <div class="header-icons" style="display:flex; padding-right:1em;">
+            <form action="/stockPrediction" method="post">
+               <div class="input-group" style="width:18em;">
+                  <input name="symbol" type="text" class="form-control text-uppercase" placeholder="Enter Stock Symbol" re>
+                  <div class="input-group-append">
+                     <button class="btn btn-secondary" type="submit">
+                        <d class="fa fa-search"></d>
+                     </button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <nav class="navbar navbar-expand-sm navbar-light main-nav" style="background-color: #0dc7e8; font-weight:600; ">
+         <button class="navbar-toggler" data-toggle="collapse" data-target="#navMenu">
+         <span class="navbar-toggler-icon">
+         <i class="fa fa-navicon" style="color:#fff; font-size:28px;"></i>
+         </span>
+         </button>
+         <ul class="collapse navbar-collapse navbar-nav" id="navMenu">
+            <li>
+               <a href="http://127.0.0.1:5000/" class="nav-links">
+               <i class="bi bi-house-door-fill"></i>
+               Home</a>
+            </li>
+            <li>
+               <a href="http://127.0.0.1:5000/liveData" class="nav-links">
+               <i class="bi bi-graph-up"></i>
+               Live Data</a>
+            </li>
+            <li>
+               <a href="http://127.0.0.1:5000/stockPrediction" class="nav-links">
+               <i class="bi bi-code-square"></i>
+               Prediction</a>
+            </li>
+            <li>
+               <a href="http://127.0.0.1:5000/stockAverager" class="nav-links">
+               <i class="bi bi-calculator-fill"></i>
+               Market Tool</a>
+            </li>
+            <li>
+               <a href="http://127.0.0.1:5000/login" class="nav-links">
+               <i class="bi bi-person-circle"></i>  Login/Signup
+               </a>
+            </li>
+         </ul>
+      </nav>
+      <script type = "text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script type = "text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script type = "text/javascript"  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+      <script type = "text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+      <script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+      <script type = "text/javascript"  src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+   </head>
+   <!--Header Ends Here-->
+   <!--Body Starts Here-->
+   <body>
+      <div class="wrap">
+         {% block content %}
+         {% endblock %}
+      </div>
+   </body>
+   <!--Body Ends Here-->
+   <!-- Footer Starts-->
+   <footer class="page-footer font-small blue pt-4">
+      <!-- Footer Links Here-->
+      <div class="container-fluid text-center text-md-left">
+         <!-- Grid row -->
+         <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3" >
+               <h5 class="background-primary">About Us</h5>
+               <br>
+               <img src="{{ url_for('static', filename='img/capture.png') }}" class="img-responsive"><br><br>
+               <p>NepseHub is a Powerful platform to perform all kinds of prediction and analysis where you can get each and every detailed information of the stocks you require. To read more about us
+                  <a href="http://127.0.0.1:5000/aboutUs">....Read More</a>
+               </p>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+               <!-- Links -->
+               <h5 class="background-primary">Useful Links</h5>
+               <ul class="list-unstyled">
+                  <li>
+                     <a href="http://127.0.0.1:5000/">Home</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/liveData">Today's Price</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/stockPrediction">Stock Prediction</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/stockAverager">Market Tools</a>
+                  </li>
+               </ul>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+               <!-- Links -->
+               <h5 class="background-primary">Connect with Us</h5>
+               <ul class="list-unstyled">
+                  <li>
+                     <a href="http://127.0.0.1:5000/aboutUs">About Us</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/contactUs">Contact Us</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/help">Help and Support</a>
+                  </li>
+                  <li>
+                     <a href="http://127.0.0.1:5000/login">Login / Sign Up</a>
+                  </li>
+               </ul>
+            </div>
+            <!-- Grid column -->
+         </div>
+         <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2021 Copyright:
+         <a href="https://nepseHub.com/"> www.nepsehub.com</a>
+      </div>
+      <!-- Copyright -->
+   </footer>
+   <!-- Footer -->
+</div>
+<style>
+   .background-primary{border-bottom:2px solid #0DC7E8;}
+   img.img-responsive{width:19em;}
+   footer,.bg-light{font-weight:500; background-color:#fff !important;}
+   footer{border-top: 5px solid #0DC7E8;}
+   footer,ui li a,a{color:#000 !important}
+   .container {margin:0 auto;width:1024px;background-color:#f8f9fa;}
+   a.nav-link,s{color:black !important;}
+   s{margin:0.2em;margin-right:0.6em;margin-top:3rem;}
+   .navbar{padding: 0rem 0rem !important;}
+   .nav-tabs {border-bottom:0px !important;}
+   .nav-link{color:white !important;}
+   a.nav-links{color:#000 !important; text-decoration:none;padding:2rem;}
+   a.nav-links:hover{color:white !important;}
+   a:hover{color:#0DC7E8 !important; text-decoration:none;}
+   .proxies {font-family: Arial, Helvetica, sans-serif;border-collapse: collapse;width: 100%;}
+   .proxies td, #customers th {border: 1px solid #ddd;padding: 8px;}
+   .proxies tr:nth-child(even){background-color: #f2f2f2;}
+   .proxies tr:hover {background-color: #ddd;}
+   .proxies th {padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: var(--main-color);color: white;}
+   .btn-secondary{background-color:var(--main-color) !important;}
+   a{font-weight:400;}
+</style>
+</html>

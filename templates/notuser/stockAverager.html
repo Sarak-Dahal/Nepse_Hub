@@ -1,0 +1,110 @@
+{% extends 'notuser/templates/layout.html' %}
+{% block content %}
+<div class="avgCalc" style="padding: 2rem">
+   <form action="/averaging" method="post">
+      <table class="table table-bordered">
+         <tr class="averageHeader">
+            <td colspan="2">
+               <h2>Average Calculator</h2>
+            </td>
+         </tr>
+         <tr>
+            <th>Shares Purchased</th>
+            <th>Purchase Price</th>
+         </tr>
+         <tr>
+            <td>1. &nbsp;&nbsp;
+               <input name="SharesBought1" value="0" type="number" step="any" id="idSharesBought1" class="input-custom" style="width:140px;" required>
+            </td>
+            <td>Rs.&nbsp;
+               <input name="PurchasePrice1" value="0" type="number" step="any" id="idPurchasePrice1" class="input-custom" style="width:140px;" required>
+            </td>
+         </tr>
+         <tr>
+            <td>2. &nbsp;&nbsp;
+               <input name="SharesBought2" value="0" type="number" step="any" id="idSharesBought2" class="input-custom" style="width:140px;" required>
+            </td>
+            <td>Rs.&nbsp;
+               <input name="PurchasePrice2" value="0" type="number" step="any" id="idPurchasePrice2" class="input-custom" style="width:140px;" required>
+            </td>
+         </tr>
+         <tr>
+            <td>3. &nbsp;&nbsp;
+               <input name="SharesBought3" value="0" type="number" step="any" id="idSharesBought3" class="input-custom" style="width:140px;"/>
+            </td>
+            <td>Rs.&nbsp;
+               <input name="PurchasePrice3" value="0" type="number" step="any" id="idPurchasePrice3" class="input-custom" style="width:140px;"/>
+            </td>
+         </tr>
+         <tr>
+            <td>4. &nbsp;&nbsp;
+               <input name="SharesBought4" value="0" type="number" step="any" id="idSharesBought4" class="input-custom" style="width:140px;"/>
+            </td>
+            <td>Rs.&nbsp;
+               <input name="PurchasePrice4" value="0" type="number" step="any" id="idPurchasePrice4" class="input-custom" style="width:140px;"/>
+            </td>
+         </tr>
+         <tr>
+            <td>5. &nbsp;&nbsp;
+               <input name="SharesBought5" value="0" type="number" step="any" id="idSharesBought5" class="input-custom" style="width:140px;"/>
+            </td>
+            <td>Rs.&nbsp;
+               <input name="PurchasePrice5" value="0" type="number" step="any" id="idPurchasePrice5" class="input-custom" style="width:140px;"/>
+            </td>
+         </tr>
+      </table>
+      <input type="submit" name="btnCalculate" value="Calculate" id="idbtnCalculate" class="btn calculate" />
+      <a class="bi bi-question-circle-fill" href="http://127.0.0.1:5000/help" style="padding-left:0.5rem;"></a>
+      <p>Following shows the results from the <b>Share average calculator</b>.</p>
+      <table class="table table-bordered">
+         <tr class="header">
+            <td colspan="3">
+               <h3>Stock Average Calculator Results</h3>
+            </td>
+         </tr>
+         <tr>
+            <th>Total Shares</th>
+            <th>Average Cost</th>
+         </tr>
+         <tr>
+            <td>
+               <div class="result_data"></div>
+               {{ totalShare }}
+            </td>
+            <td>
+               <div class="result_data"></div>
+               {{ calc }}
+            </td>
+         </tr>
+      </table>
+   </form>
+</div>
+<style>
+   tr.averageHeader h2{
+   display: inline;
+   padding: 12px;
+   font-weight: 500;
+   font-style: 1em;
+   line-height: 1em;
+   color: #fff;
+   background:#0dc7e8;
+   }
+   .calculate{
+   background:#0dc7e8;
+   color:#fff;
+   }
+   .calculate:hover{
+   color:#000;
+   }
+   .input-custom{
+   background-color: #fff;
+   padding: 0.2em 0.4em;
+   line-height: 0.9em;
+   color: black;
+   vertical-align: middle;
+   border: 1.3px solid #ccc;
+   border-radius: 8px;
+   display: inline;
+   }
+</style>
+{% endblock %}

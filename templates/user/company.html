@@ -1,0 +1,47 @@
+{% extends 'user/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Listed Companies in NEPSE</h3>
+      <div class="social-icons">
+         <h4><a style="color:var(--main-color);"  href="http://127.0.0.1:5000/logout">Logout</a></h4>
+      </div>
+   </header>
+   <main>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+      <div class="card">
+         <div class="card-body">
+            <div class="mt-4">
+               <table id="proxies" class="display table nowrap responsive" style="width: 100%">
+                  <thead>
+                     <tr>
+                        {% for header in result[0].keys() %}
+                        <th>{{header}}</th>
+                        {% endfor %}
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {% for row in result %}
+                     <tr>
+                        {% for index in range(0, len(fieldnames)) %}
+                        <td>{{  row[fieldnames[index]]  }}</td>
+                        {% endfor %}
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <script type="text/javascript">
+         $('#proxies').DataTable();
+      </script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+         crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+         crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+         crossorigin="anonymous"></script>
+   </main>
+</div>
+{% endblock %}

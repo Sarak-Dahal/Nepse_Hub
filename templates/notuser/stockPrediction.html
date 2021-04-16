@@ -1,0 +1,128 @@
+{% extends 'notuser/templates/layout.html' %}
+{% block content %}
+<script>
+   $(function(){
+     $("#stockGraph").load("stockGraph");
+   });
+</script>
+<div class="pred" style="margin-top:3rem;">
+   <form class="form-inline mr-auto" action="/stockPrediction" method="post" style="text-tranform:uppercase">
+      <input name="symbol" class="form-control mr-sm-2 text-uppercase" type="text" placeholder="Stock Symbol" aria-label="Predict" style="width:30%;margin-left:30%;" required>
+      <button class="btn predict" type="submit">Predict</button>
+      <a class="bi bi-question-circle-fill" href="http://127.0.0.1:5000/help" style="padding-left:0.5rem;"></a>
+      <br>
+   </form>
+   <h6 class="text-center" style="color:red;">{{ msg }}</h6>
+</div>
+<div class="entire-cards" style="margin:5em;">
+   <div class="card-deck" style="padding:2em;">
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">{{ sign }}</h4>
+            <br>
+            <h6 class="card-text text-center">Symbol</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">Rs. {{ opn }}</h4>
+            <br>
+            <h6 class="card-text text-center">Open Price</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">Rs. {{ high }}</h4>
+            <br>
+            <h6 class="card-text text-center">High Price</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">Rs. {{ low }}</h4>
+            <br>
+            <h6 class="card-text text-center">Low Price</h6>
+         </div>
+      </div>
+   </div>
+   <div class="card-deck" style="padding:2em;">
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">{{ ltp }}</h4>
+            <br>
+            <h6 class="card-text text-center">Last Traded Price</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">{{ ltv }}</h4>
+            <br>
+            <h6 class="card-text text-center">Last Traded Volume</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">{{ change }}</h4>
+            <br>
+            <h6 class="card-text text-center">% Change</h6>
+         </div>
+      </div>
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center newColor">{{ quantity }}</h4>
+            <br>
+            <h6 class="card-text text-center">Quantity</h6>
+         </div>
+      </div>
+   </div>
+   <div class="card-deck" style="padding:2em;">
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center advColor">Rs. {{ predi }}</h4>
+            <br>
+            <h6 class="card-text text-center">Tommorow's Predicted Price</h6>
+         </div>
+      </div>
+   </div>
+   <div class="card-deck" style="padding:2em;">
+      <div class="card border border-success">
+         <div class="card-body">
+            <h4 class="card-title text-center">Suggestion:</h4>
+            <br>
+            <h5 class="card-text text-center">{{answer}}</h5>
+         </div>
+      </div>
+   </div>
+   <div id="stockGraph"></div>
+   <div class="trainer">
+      <h5>Above Stock data are based on the data of date: {{ dateHere }}</h5>
+      <a href="http://127.0.0.1:5000/model">
+      <button class="btn predict" id="trainer">Re-Train Model</button>
+      </a>
+   </div>
+   <a class="bi bi-question-circle-fill" href="http://127.0.0.1:5000/help" style="float:right;"></a>
+</div>
+<style>
+   .advColor{
+   color:{{ predictionColor }};
+   }
+   .newColor{
+   color:{{ predictColor }};
+   }
+   .predict{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   .border-success {
+   border-color: #0dc7e8 !important;
+   }
+   .trainer{
+   text-align:center;
+   }
+   #trainer{
+   position: absolute;
+   margin-left: -3.8rem;
+   }
+</style>
+{% endblock %}

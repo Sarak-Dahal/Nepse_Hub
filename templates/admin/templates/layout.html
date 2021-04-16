@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+      <title>Admin Panel</title>
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='userCss/style.css') }}">
+   </head>
+   <body>
+      <input type="checkbox" id="sidebar-toggle">
+      <div class="sidebar">
+         <div class="sidebar-header">
+            <h3 class="brand">
+               <span class="ti-stats-up"></span>
+               <span>Nepse Gyan</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+         </div>
+         <div class="sidebar-menu">
+            <ul>
+               <li>
+                  <a href="http://127.0.0.1:5000/admin/dashboard">
+                  <span class="ti-home"></span>
+                  <span>Home</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/admin/user">
+                  <span class="ti-user"></span>
+                  <span>User Management</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/admin/companyCode">
+                  <span class="ti-desktop"></span>
+                  <span>Add Company Code</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/admin/createAdmin">
+                  <span class="ti-plus"></span>
+                  <span>Create Admin</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://127.0.0.1:5000/logout">
+                  <span class="ti-power-off"></span>
+                  <span>Log Out</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      {% block content %}
+      {% endblock %}
+   </body>
+   <style>
+      a{
+      text-decoration:none !important;
+      }
+      a:hover{
+      color:black;
+      }
+      h3{
+      font-size: 1.2rem !important;
+      }
+      header h3{
+      color:var(--main-color);
+      }
+      h6{
+      float:right;
+      }
+   </style>
+</html>

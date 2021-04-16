@@ -1,0 +1,155 @@
+{% extends 'notuser/templates/layout.html' %}
+{% block content %}
+<script>
+   $(function(){
+     $("#includedContent").load("graph");
+   });
+</script>
+<div class="division" style="margin-top:3em; margin-bottom:0.9em;border:2px solid #000;">
+   <div class="fle-two">
+      <span class="market" id="ino">
+         <div class="stats">
+            <h2 class="text-center" id="marketStat">{{ marketStat }}</h2>
+         </div>
+         <table class="table table-dark">
+            <thead id="primayColor">
+               <tr class="table-head">
+                  <th scope="col"></th>
+                  <th scope="col">NEPSE Index</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><b>Index</b></td>
+                  <td class="changeColor">{{ intCi }}</td>
+               </tr>
+               <tr>
+                  <td><b>Point Change</b></td>
+                  <td class="changeColor">{{ intPc }}</td>
+               </tr>
+               <tr>
+                  <td><b>Percent Change</b></td>
+                  <td class="changeColor">{{ intPcc }} %</td>
+               </tr>
+               <tr>
+                  <td><b>Volume</b></td>
+                  <td class="weight">{{ intSv }} units</td>
+               </tr>
+               <tr>
+                  <td><b>Turnover</b></td>
+                  <td class="weight">Rs. {{ intTo }}</td>
+               </tr>
+            </tbody>
+         </table>
+      </span>
+   </div>
+</div>
+<div id="includedContent"></div>
+<div class="graph" style="margin: auto;width: 30%;">
+   <a href="http://127.0.0.1:5000/graph" target="_blank">
+   <button class="btn">Nepse Graph→</button>
+   </a>
+</div>
+<div class="topGainLose" style="margin-bottom:43rem;margin-top:2rem;">
+   <div class="left">
+      <table class="table table-dark proxies">
+         <thead>
+            <h3>Top Gainers</h3>
+            <tr>
+               <th>Symbol</th>
+               <th>LTP</th>
+               <th>Point Change</th>
+               <th>% Change</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for row in gain %}
+            <tr>
+               {% for index in range(0, len(finalGain)) %}
+               <td style="color:green">{{  row[finalGain[index]]  }}</td>
+               {% endfor %}
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+   <div class="right">
+      <table class="table table-dark proxies">
+         <thead>
+            <h3>Top Losers</h3>
+            <tr>
+               <th>Symbol</th>
+               <th>LTP</th>
+               <th>Point Change</th>
+               <th>% Change</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for row in lose %}
+            <tr>
+               {% for index in range(0, len(finalLose)) %}
+               <td style="color:red">{{  row[finalLose[index]]  }}</td>
+               {% endfor %}
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</div>
+<style>
+   div.frame{
+   width:50%;
+   height:50%;
+   border:solid #000 1px;
+   }
+   .graphical{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   #marketStat{
+   color: {{ market }};
+   }
+   .changeColor{
+   color: {{ getColor }};
+   font-weight: 700;
+   }
+   .weight{
+   font-weight: 700;
+   }
+   .left{
+   width:49%;
+   float:left;
+   }
+   .right{
+   width:49%;
+   float:right;
+   }
+   .flex-one{
+   flex: 0 0 60%;
+   max-width: 60%;
+   }
+   .flex-two {
+   flex: 0 0 40%;
+   max-width: 40%;
+   }
+   span.market{
+   display:inline-block;
+   height:auto;
+   width:100%;
+   border:1px solid #000;
+   }
+   div.stock-turn{
+   padding:1em;
+   border-top: 1px solid #000;
+   }
+   .alignleft {
+   float: left;
+   margin-left:7em;
+   }
+   .alignright {
+   float: right;
+   margin-right:5em;
+   }
+</style>
+{% endblock %}

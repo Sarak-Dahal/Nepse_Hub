@@ -1,0 +1,88 @@
+{% extends 'admin/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Welcome Admin,</h3>
+      <h6><a href="http://127.0.0.1:5000/logout" style="text-decoration:none;color:var(--main-color);">Logout</a></h6>
+   </header>
+   <main>
+      <div class="dash-cards">
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-briefcase"></span>
+               <div>
+                  <h4>Total Admin</h4>
+                  <h2 >{{adminCount}}</h2>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/admin/user">View All</a>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-reload"></span>
+               <div>
+                  <h4>Total User</h4>
+                  <h2>{{userCount}}</h2>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/admin/user">View All</a>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-check-box"></span>
+               <div>
+                  <h4>Total Brokers</h4>
+                  <h2>{{brokerCount}}</h2>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/user/brokers">View All</a>
+            </div>
+         </div>
+      </div>
+      <br><br><br>
+      <div class="dash-cards">
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-briefcase"></span>
+               <div>
+                  <h4>Total Companies</h4>
+                  <h2>{{companyCount}}</h2>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/user/company">View All</a>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-reload"></span>
+               <div>
+                  <h3>Add Companies</h3>
+                  <br><br>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/admin/companyCode">Add New</a>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-check-box"></span>
+               <div>
+                  <h3>Add User</h3>
+                  <br><br>
+               </div>
+            </div>
+            <div class="card-footer">
+               <a href="http://127.0.0.1:5000/admin/createAdmin">Add New</a>
+            </div>
+         </div>
+      </div>
+   </main>
+</div>
+{% endblock %}

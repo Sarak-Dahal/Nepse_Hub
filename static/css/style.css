@@ -1,0 +1,36 @@
+:root {
+    --main-color: #28a7d5;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+}
+
+.bg-light {
+    background-color: #000 !important;
+}
+ul li{
+    padding:1rem;
+}
+
+a {
+    color: #fff !important;
+    text-decoration: solid;
+    background-color: transparent;
+}
+
+
+table.table-dark tr{
+    text-align:center;
+    color:black;
+    background:#fff;
+}
+.table-dark td{
+    border:none;
+}
+tr.table-head{
+    background:#000 !important;
+    color:#fff !important;
+}
+
+footer{
+    margin-top:5em;
+}

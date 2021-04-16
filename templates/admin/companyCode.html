@@ -1,0 +1,59 @@
+{% extends 'admin/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Add New Company with its Code</h3>
+      <h6><a href="http://127.0.0.1:5000/logout" style="text-decoration:none;color:var(--main-color);">Logout</a></h6>
+   </header>
+   <main>
+      <div class="instruct" style="color:{{ color }};">
+         {{ msg }}
+      </div>
+      <form action="/admin/addNewCompany" class="companyCode" method="post">
+         <div class="form-group">
+            <div class="input-group">
+               <input id="code" name="companyCode" placeholder="Company Code" class="form-control" pattern="\d*" maxlength="5" required>
+               <input id="symbol" name="symbol" placeholder="Company Name" class="form-control text-uppercase"  type="text" maxlength="10" required>
+            </div>
+         </div>
+         <div class="form-group">
+            <input name="submit" class="btn btn-lg btn-primary btn-block" value="Add New Company" type="submit">
+         </div>
+      </form>
+      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+         <thead>
+            <tr>
+               <td>Company Code</td>
+               <td>Company Name</td>
+               <td>Action</td>
+            </tr>
+         </thead>
+         <tbody>
+            {% for companyCodes in companyCodes %}
+            <tr>
+               <td>{{ companyCodes[0] }}</td>
+               <td>{{ companyCodes[1] }}</td>
+               <td width="12rem">
+                  <a href="/admin/companyCode/delete/{{ companyCodes[0] }}" class="btn btn-danger btn-delete btn-sm">Delete</a>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </main>
+</div>
+<style>
+   .btn-block{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   thead tr td{
+   font-weight:900;
+   font-size:1.1rem;
+   }
+   tbody td{
+   font-size:1rem;
+   }
+</style>
+{% endblock %}

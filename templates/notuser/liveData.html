@@ -1,0 +1,51 @@
+{% extends 'notuser/templates/layout.html' %}
+{% block content %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+<div class="card">
+   <div class="card-body">
+      <form action="/refresh" method="post">
+         <input type="button" class="btn refresh text-center" onClick="history.go(0)" VALUE="Refresh Data">
+         <a class="bi bi-question-circle-fill" href="http://127.0.0.1:5000/help"></a>
+      </form>
+      <div class="mt-4">
+         <table id="proxies" class="display table nowrap responsive proxies" style="width: 100%">
+            <thead>
+               <tr>
+                  {% for header in result[0].keys() %}
+                  <th>{{header}}</th>
+                  {% endfor %}
+               </tr>
+            </thead>
+            <tbody>
+               {% for row in result %}
+               <tr>
+                  {% for index in range(0, len(fieldnames)) %}
+                  <td>{{  row[fieldnames[index]]  }}</td>
+                  {% endfor %}
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+   $('#proxies').DataTable();
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+   crossorigin="anonymous"></script>
+<style>
+   .refresh{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   .red {
+   background-color: red !important;
+   }
+</style>
+{% endblock %}

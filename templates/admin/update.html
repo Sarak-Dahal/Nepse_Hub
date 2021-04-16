@@ -1,0 +1,56 @@
+{% extends 'admin/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Update User</h3>
+      <h6><a href="http://127.0.0.1:5000/logout" style="text-decoration:none;color:var(--main-color);">Logout</a></h6>
+   </header>
+   <main>
+      <form action="/admin/editUser" class="editUser" method="post">
+         <div class="form-group">
+            <div class="input-group">
+               <label for="id">User Id</label>
+               <input id="id" name="id" placeholder="User Id" class="form-control col-md-8" type="text" maxlength="25" value="{{ editId }}" readonly>
+            </div>
+            <div class="input-group">
+               <label for="name">Name</label>
+               <input id="name" name="name" placeholder="User Name" class="form-control col-md-8" type="text" maxlength="25" value="{{ editName }}" required>
+            </div>
+            <div class="input-group">
+               <label for="number">Number</label>
+               <input id="number" name="number" placeholder="Contact Number" class="form-control col-md-8" pattern="\d{*}" maxlength="10" value="{{ editNumber }}" required>
+            </div>
+            <div class="input-group">
+               <label for="password">Password</label>
+               <input id="password" name="password" placeholder="Password" class="form-control col-md-8" type="password" maxlength="20" value="{{ editPassword }}" required>
+            </div>
+            <div class="input-group">
+               <label for="email">Email</label>
+               <input id="email" name="email" placeholder="Email" class="form-control col-md-8" type="email" maxlength="25" value="{{ editEmail }}" required>
+            </div>
+            <div class="input-group">
+               <label for="isAdmin">Is Admin</label>
+               <input id="isAdmin" name="isAdmin" placeholder="Is Admin? Use: 0 for User and 1 for Admin" class="form-control col-md-8" pattern="[0-1]" maxlength="1" min="0" max="1" value="{{ editIsAdmin }}" required>
+            </div>
+         </div>
+         <div class="form-group">
+            <input name="submit" class="btn btn-lg btn-primary btn-block" value="Edit User" type="submit">
+         </div>
+      </form>
+   </main>
+</div>
+<style>
+   .input-group{
+   margin-top:0.5rem;
+   }
+   .btn-block{
+   color: #fff;
+   background-color:#0dc7e8;
+   border-color: #28a7d5;
+   }
+   label{
+   margin-top:0.5rem;
+   margin-right:5rem;
+   }
+</style>
+{% endblock %}

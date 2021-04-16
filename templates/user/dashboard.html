@@ -1,0 +1,77 @@
+{% extends 'user/templates/layout.html' %}
+{% block content %}
+<div class="main-content">
+   <header>
+      <h3>Welcome User 🙏</h3>
+      <div class="social-icons">
+         <h4><a style="color:var(--main-color);"  href="http://127.0.0.1:5000/logout">Logout</a></h4>
+      </div>
+   </header>
+   <main>
+      <h2 class="dash-title">NEPSE Stats</h2>
+      <div class="dash-cards">
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-stats-up"></span>
+               <div>
+                  <h5>Top Gainer</h5>
+                  <h4 style="color:var(--main-color);">{{ gain }}</h4>
+               </div>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-stats-down"></span>
+               <div>
+                  <h5>Top Loser</h5>
+                  <h4 style="color:var(--main-color);">{{ lose }}</h4>
+               </div>
+            </div>
+         </div>
+         <div class="card-single">
+            <div class="card-body">
+               <span class="ti-money"></span>
+               <div>
+                  <h5>Highest Transaction</h5>
+                  <h4 style="color:var(--main-color);">{{ highestTrans }}</h4>
+               </div>
+            </div>
+         </div>
+      </div>
+      <section class="recent">
+         <div class="activity-grid">
+            <div class="activity-card">
+               <h3>Today's Highest Transactions</h3>
+               <div class="table-responsive">
+                  <table class="table table-dark" id="proxies">
+                     <thead>
+                        <tr>
+                           <th>Symbol</th>
+                           <th>LTP</th>
+                           <th>LTV</th>
+                           <th>% Change</th>
+                           <th>High</th>
+                           <th>Low</th>
+                           <th>Open</th>
+                           <th>Quantity</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {% for row in tran %}
+                        <tr>
+                           {% for index in range(0, len(finalTran)) %}
+                           <td style="color:green">{{  row[finalTran[index]]  }}</td>
+                           {% endfor %}
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+</div>
+<style>
+</style>
+{% endblock %}
