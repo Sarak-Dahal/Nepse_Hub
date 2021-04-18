@@ -1,7 +1,6 @@
 # Views will contains all the views of file
 import random
 import smtplib
-from datetime import date
 from app import app
 from flask import render_template, request, session, redirect, url_for
 import requests
