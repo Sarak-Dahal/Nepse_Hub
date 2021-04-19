@@ -14,7 +14,6 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import model_from_json
-import joblib
 import plotly.express as px
 from datetime import date, timedelta
 from email.message import EmailMessage
@@ -121,9 +120,19 @@ def index():
         df = pd.read_csv('static/modelCreation/nepseindex.csv')
         figure = px.line(df, x='Date', y='ClosePrice', title="NEPSE LifeTime Advance Graph")
         figure.write_html("templates/nepseGraph.html")
+
+        #Highest Transaction
+        tran = []
+        hTran = open('csvFiles/highestT.csv')
+        reader = csv.DictReader(hTran)
+        for row in reader:
+            tran.append(dict(row))
+        finalTran = [key for key in tran[0].keys()]
+
         return render_template('notuser/index.html', intCi=intCi, intPc=intPc, intPcc=intPcc, intSv=intSv, intTo=intTo,
                                marketStat=marketStat, gain=gain, finalGain=finalGain, lose=lose, finalLose=finalLose,
-                               len=len, getColor=getColor, market=market)
+                               len=len, getColor=getColor, market=market,finalTran=finalTran,tran=tran)
+
 
     else:
         return render_template('notuser/index.html')
