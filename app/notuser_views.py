@@ -13,6 +13,7 @@ import math
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from keras.models import model_from_json
 import joblib
 import plotly.express as px
 from datetime import date, timedelta
@@ -240,8 +241,16 @@ def predict():
         # Reshaping the data
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
-        # getting model from pkl file
-        model = joblib.load('stockModel')
+        # load json and create model
+        json_file = open('model.json', 'r')
+        loaded_model_json = json_file.read()
+        json_file.close()
+        model = model_from_json(loaded_model_json)
+        # load weights into new model
+        model.load_weights("model.h5")
+        print("Loaded model from disk")
+
+
         # Get Predicted Value
         predict = model.predict(x_test)
         predict = scale.inverse_transform(predict)

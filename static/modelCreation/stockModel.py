@@ -2,8 +2,8 @@ import math
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
+from tensorflow.python.keras.layers import LSTM, Dense
+from tensorflow.python.keras.models import Sequential
 import joblib
 
 

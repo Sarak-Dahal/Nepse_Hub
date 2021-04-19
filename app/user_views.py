@@ -3,6 +3,8 @@ import csv
 from app import app,notuser_views
 from flask import render_template
 import pandas as pd
+import pickle
+
 
 @app.route("/user/home")
 def dashboard():
@@ -118,5 +120,13 @@ def model():
     # Training the model
     model.fit(x_train, y_train, batch_size=1, epochs=1)
 
-    joblib.dump(model, 'stockModel')
+    # serialize model to JSON
+    model_json = model.to_json()
+    with open("model.json", "w") as json_file:
+        json_file.write(model_json)
+    # serialize weights to HDF5
+    model.save_weights("model.h5")
+    print("Saved model to disk")
+
+
     return render_template('notUser/stockPrediction.html')
